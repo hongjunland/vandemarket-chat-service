@@ -22,7 +22,7 @@ class ChatMessagePersistenceAdapterTest{
     private SpringDataChatRoomRepository springDataChatRoomRepository;
 
     @Test
-    public void createChatMessage() {
+    public void testCreateChatMessage() {
         // Given
         final Long roomId = 1L;
         final Long chatId = 1L;

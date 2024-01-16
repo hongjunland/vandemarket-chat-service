@@ -28,7 +28,7 @@ class ChatMessageLoadPersistenceAdapterTest {
     private SpringDataChatMessageRepository springDataChatMessageRepository;
 
     @Test
-    public void loadChatMessageList_test(){
+    public void testLoadChatMessageList(){
         // Given
         final Long roomId = 1L;
         final PageRequest pageRequest = PageRequest.of(1,10);

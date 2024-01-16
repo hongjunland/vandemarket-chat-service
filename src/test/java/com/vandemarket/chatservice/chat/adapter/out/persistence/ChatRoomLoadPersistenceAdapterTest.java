@@ -24,7 +24,7 @@ class ChatRoomLoadPersistenceAdapterTest{
     @Mock
     private SpringDataChatRoomRepository springDataChatRoomRepository;
     @Test
-    public void loadById_test() {
+    public void testLoadById() {
         // Given
         final Long roomId = 1L;
         final PageRequest pageRequest = PageRequest.of(1, 10);
@@ -42,7 +42,7 @@ class ChatRoomLoadPersistenceAdapterTest{
         Assertions.assertEquals(expectedResult, result);
     }
     @Test
-    public void search() {
+    public void testSearch() {
         // Given
         final PageRequest pageRequest = PageRequest.of(1, 10);
         Slice<ChatRoomJpaEntity> chatRoomJpaEntityList = new SliceImpl<>(List.of(

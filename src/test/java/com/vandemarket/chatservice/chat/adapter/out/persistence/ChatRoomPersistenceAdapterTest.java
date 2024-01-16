@@ -21,7 +21,7 @@ class ChatRoomPersistenceAdapterTest {
     private SpringDataChatRoomRepository springDataChatRoomRepository;
 
     @Test
-    public void createChatRoom() {
+    public void testCreateChatRoom() {
         ChatRoom chatRoom = ChatRoom.builder().build();
         // Given
         when(springDataChatRoomRepository.save(any(ChatRoomJpaEntity.class))).thenReturn(any());

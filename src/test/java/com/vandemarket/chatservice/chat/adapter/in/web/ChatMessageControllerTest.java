@@ -25,7 +25,7 @@ class ChatMessageControllerTest {
     private ChatMessageLoadUseCase chatMessageLoadUseCase;
 
     @Test
-    public void getMessageList_test(){
+    public void testGetMessageList(){
         // Given
         final Long roomId = 1L;
         final int page = 1;

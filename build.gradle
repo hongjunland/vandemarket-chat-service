@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.1'
     id 'io.spring.dependency-management' version '1.1.4'
+    id 'jacoco'
 }
 
 group = 'com.vandemarket'
@@ -34,6 +35,55 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
+    finalizedBy 'jacocoTestReport'
+}
+
+jacoco {
+    toolVersion = '0.8.8'
+}
+
+jacocoTestReport {
+    dependsOn test // 리포트 생성을 위해서는 test가 먼저 완료되어야 함
+    reports {
+        xml.required = false
+        csv.required = false
+        html.required = true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(
+                files(classDirectories.files.collect {
+                    fileTree(dir: it, excludes: [
+                            "**/*Application*",
+                            '**/*Request*',
+                            '**/*JpaEntity*',
+                            '**/*Response*',
+                            '**/Swagger*',
+                            '**/PasswordEncoderConfig*',
+                            '**/JpaAuditingConfig*',
+                            '**/common/**',
+                            '**/*Builder*',
+                            '**/*Q**'
+                    ])
+                })
+        )
+    }
+}
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            excludes = [
+                    "**/*Application*",
+                    '**/*Request*',
+                    '**/*Response*',
+                    '**/Swagger*',
+                    '**/PasswordEncoderConfig*',
+                    '**/JpaAuditingConfig*',
+                    '**/common/**',
+                    '**/*JpaEntity*',
+                    '**/*Q**'
+            ]
+        }
+    }
 }

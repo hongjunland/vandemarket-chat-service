@@ -31,7 +31,7 @@ class LoadChatRoomServiceTest {
     private LoadChatRoomPort loadChatRoomPort;
 
     @Test
-    public void getChatRoomById_test(){
+    public void testGetChatRoomById(){
         // Given
         final Long roomId = 1L;
         final int page = 1;
@@ -59,7 +59,7 @@ class LoadChatRoomServiceTest {
     }
 
     @Test
-    public void getChatRoomList_test(){
+    public void testGetChatRoomList(){
         // Given
         final int page = 1;
         final int size = 10;

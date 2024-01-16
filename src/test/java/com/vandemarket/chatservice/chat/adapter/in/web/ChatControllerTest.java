@@ -24,7 +24,7 @@ class ChatControllerTest {
     private ChatMessageCreateUseCase chatMessageCreateUseCase;
 
     @Test
-    public void sendMessage_test(){
+    public void testSendMessage(){
         // Given
         Long roomId = 1L;
         Long chatId = 11L;

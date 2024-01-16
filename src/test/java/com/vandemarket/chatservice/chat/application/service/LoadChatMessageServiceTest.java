@@ -26,7 +26,7 @@ class LoadChatMessageServiceTest {
     private LoadChatMessagePort loadChatMessagePort;
 
     @Test
-    public void getChatMessageList_test(){
+    public void testGetChatMessageList(){
         // Given
         final Long roomId = 1L;
         final int page = 1;

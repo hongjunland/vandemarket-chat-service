@@ -32,7 +32,7 @@ class ChatRoomControllerTest {
     private ChatRoomLoadUseCase chatRoomLoadUseCase;
 
     @Test
-    public void createChatRoom_test() {
+    public void testCreateChatRoom() {
         // Given
         ChatRoomCreateCommand chatRoomCreateCommand = ChatRoomCreateCommand.builder().build();
         when(chatRoomCreateUseCase.createChatRoom(chatRoomCreateCommand)).thenReturn(true);
@@ -40,12 +40,12 @@ class ChatRoomControllerTest {
         SuccessApiResponse<?> response = chatRoomController.createChatRoom();
 
         // Then
-        verify(chatRoomCreateUseCase, times(1));
+        verify(chatRoomCreateUseCase, times(1)).createChatRoom(chatRoomCreateCommand);
         Assertions.assertEquals(response.getStatus(), HttpStatus.OK.value());
     }
 
     @Test
-    void getChatRoom_test() {
+    void testGetChatRoom() {
         // Given
         final Long roomId = 1L;
         final int page = 1;
@@ -67,7 +67,7 @@ class ChatRoomControllerTest {
     }
 
     @Test
-    void getChatRoomList_test() {
+    void testGetChatRoomList() {
         // Given
         final int page = 1;
         final int size = 10;

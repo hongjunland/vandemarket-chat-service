@@ -22,7 +22,7 @@ class CreateChatRoomServiceTest {
     private CreateChatRoomPort createChatRoomPort;
 
     @Test
-    public void createChatRoom_test(){
+    public void testCreateChatRoom(){
         // Given
         ChatRoomCreateCommand command = ChatRoomCreateCommand.builder().build();
         when(createChatRoomPort.createChatRoom(any(ChatRoom.class))).thenReturn(true);

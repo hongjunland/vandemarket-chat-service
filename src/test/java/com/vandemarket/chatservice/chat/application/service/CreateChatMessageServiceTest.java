@@ -23,7 +23,7 @@ class CreateChatMessageServiceTest {
     private CreateChatMessagePort createChatMessagePort;
 
     @Test
-    public void createChatMessage_test(){
+    public void testCreateChatMessage(){
         // Given
         final Long roomId = 1L;
         final Long chatId = 11L;
