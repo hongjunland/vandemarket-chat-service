@@ -5,13 +5,9 @@ import com.vandemarket.chatservice.chat.domain.ChatRoom;
 import com.vandemarket.chatservice.common.annotation.PersistenceAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
-import org.springframework.data.domain.Sort;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @PersistenceAdapter

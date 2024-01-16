@@ -21,24 +21,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 class LoadChatRoomService implements ChatRoomLoadUseCase {
     private final LoadChatRoomPort loadChatRoomPort;
-    private ChatRoomQuery chatRoomQuery;
 
     @Override
-    public ChatRoomResponse getChatRoomById(ChatRoomQuery chatRoomQuery) {
-        this.chatRoomQuery = chatRoomQuery;
-        PageRequest pageRequest = PageRequest.of(chatRoomQuery.page(), chatRoomQuery.size());
-        ChatRoom chatRoom = loadChatRoomPort.loadById(chatRoomQuery.id(), pageRequest);
+    public ChatRoomResponse getChatRoomById(ChatRoomQuery query) {
+        PageRequest pageRequest = PageRequest.of(query.page(), query.size());
+        ChatRoom chatRoom = loadChatRoomPort.loadById(query.id(), pageRequest);
 
         return ChatRoomResponse.builder()
                 .roomId(chatRoom.getRoomId().value())
-//                .messageList(chatRoom.getMessageList()
-//                    .stream().map((chatMessage ->
-//                        ChatMessageResponse.builder()
-//                            .id(chatMessage.getChatId().value())
-//                            .content(chatMessage.getContent())
-//                            .writer(chatMessage.getWriter())
-//                            .build()
-//                    )).collect(Collectors.toList()))
                 .build();
     }
 

@@ -20,7 +20,7 @@ class ChatMessageLoadPersistenceAdapter implements LoadChatMessagePort {
 
     @Transactional
     @Override
-    public List<ChatMessage> loadChatMessegeList(Long roomId, PageRequest pageRequest) {
+    public List<ChatMessage> loadChatMessageList(Long roomId, PageRequest pageRequest) {
         ChatRoomJpaEntity chatRoomJpaEntity = springDataChatRoomRepository.findById(roomId)
                 .orElseThrow(RuntimeException::new);
         Slice<ChatMessageJpaEntity> chatMessageJpaEntitySlice = springDataChatMessageRepository.findAllByChatRoom(chatRoomJpaEntity, pageRequest);

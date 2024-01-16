@@ -5,12 +5,10 @@ import com.vandemarket.chatservice.chat.application.port.in.ChatMessageLoadUseCa
 import com.vandemarket.chatservice.chat.application.port.in.query.ChatMessageListQuery;
 import com.vandemarket.chatservice.chat.application.port.out.LoadChatMessagePort;
 import com.vandemarket.chatservice.common.annotation.UseCase;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +19,7 @@ class LoadChatMessageService implements ChatMessageLoadUseCase {
     @Override
     public List<ChatMessageResponse> getChatMessageList(ChatMessageListQuery query) {
         PageRequest pageRequest = PageRequest.of(query.page(), query.size(), Sort.by("chatMessageId").descending());
-        return loadChatMessagePort.loadChatMessegeList(query.roomId(), pageRequest)
+        return loadChatMessagePort.loadChatMessageList(query.roomId(), pageRequest)
                 .stream().map((chatMessage)->
                         ChatMessageResponse.builder()
                                 .id(chatMessage.getChatId().value())
