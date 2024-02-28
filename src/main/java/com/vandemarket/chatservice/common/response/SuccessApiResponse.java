@@ -5,9 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
-public class SuccessApiResponse<T> extends ApiResponse{
+public class SuccessApiResponse<T> extends ApiResponse {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
     // 데이터 있을 시

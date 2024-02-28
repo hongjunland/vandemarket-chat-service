@@ -1,7 +1,8 @@
 server:
-  port: 8788
-
+  port: 0
 spring:
+  application:
+    name: chat-service
   datasource:
     url: jdbc:mysql://localhost:3306/mysql?useSSL=false&useUnicode=true&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
     username: root
@@ -9,9 +10,28 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
+  kafka:
+    consumer:
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+logging:
+  level:
+    org.springframework.web.socket: DEBUG
 #logging:
 #  level:
 #    org.hibernate.SQL: DEBUG # SQL 문을 로그로 출력
 #    org.hibernate.type: TRACE # 바인딩된 파라미터 값을 로그로 출력
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.instance_id:${random.value}}
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 10
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
