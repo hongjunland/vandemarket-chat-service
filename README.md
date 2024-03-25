@@ -1,4 +1,6 @@
 ## Chat Service \[server\]
+![image](https://github.com/hongjunland/vandemarket-chat-service/assets/48708288/9cf8d883-113b-41b9-9968-fea0eeda6648)
+
 
 1. 기술스택
 
@@ -15,6 +17,7 @@
 * 채팅방목록 기능
 * 채팅메시지 기능 
 * 인증서버에 사용자정보 요청
+
 
 3. Client 예시 주소: https://github.com/hongjunland/chat-react
    
